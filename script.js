@@ -11,17 +11,17 @@ var quizQuestions = [
   {
     question: 'this is question one',
     answers: [
-      'something one',
+      '1something one',
       'something two',
       'something three',
       'something four'
     ],
-    correctAnswer: 'whatever the correct text is'
+    correctAnswer: 'something two'
   },
   {
     question: 'this is question two',
     answers: [
-      'something one',
+      '2something one',
       'something two',
       'something three',
       'something four'
@@ -31,7 +31,7 @@ var quizQuestions = [
   {
     question: 'this is question three',
     answers: [
-      'something one',
+      '3something one',
       'something two',
       'something three',
       'something four'
@@ -41,7 +41,7 @@ var quizQuestions = [
   {
     question: 'this is question four',
     answers: [
-      'something one',
+      '4something one',
       'something two',
       'something three',
       'something four'
@@ -51,7 +51,7 @@ var quizQuestions = [
   {
     qustion: 'this is question five',
     answers: [
-      'something one',
+      '5something one',
       'something two',
       'something three',
       'something four'
@@ -61,20 +61,43 @@ var quizQuestions = [
 ];
 
 //functions
-function createQuestion() {
-  for (let i = 0; i < quizQuestions[i].answers.length; i++) {
-    var currentQuestion = quizQuestions[i].question;
-    var currentAns = quizQuestions[i].answers
-    console.log('currentAns:', currentAns)
-    
-  }
-  fillQuestion.textContent = quizQuestions[0].question
-  fillAnswers.textContent = currentAns
-
-
-
+function nextQuestion() {
+  
 }
-createQuestion()
+
+function createAnswers(){
+  var correctAns = quizQuestions[0].correctAnswer;
+  console.log('correctAns:', correctAns);
+  for (let i = 0; i < quizQuestions[i].answers.length; i++) {
+    var currentAns = quizQuestions[i].answers[i];
+    console.log('currentAns:', currentAns);
+    var newButton = document.createElement('button');
+    //
+    newButton.setAttribute('value', currentAns)
+    newButton.textContent = currentAns;
+    fillAnswers.appendChild(newButton);
+    newButton.addEventListener('click', function(event){
+      console.log("event: ", event.target.value)
+      console.log('correctAnswer:', correctAns)
+      if (event.target.value === correctAns) {
+        alert('correct')
+      } else {
+        alert('wrong')
+      }
+    })
+  }
+}
+
+function createQuestion() {
+  fillQuestion.textContent = quizQuestions[0].question;
+  createAnswers()
+}
+
+//for loop to go through question objects
+// for (let i = 0; i < quizQuestions.length; i++) {
+
+//   }
+createQuestion()  //this will go in the start button thing once it works
 
 // //when start button is clicked, begin timer and hide the code quiz jumbotron
 // startButton.addEventListener('click', function(setTime) {
@@ -86,14 +109,9 @@ createQuestion()
 //     }
 //   }, 1000);
 
-  //for loop to go through question objects
-  // for (let i = 0; i < quizQuestions.length; i++) {
-
-
-  //   }
 
     // function createQuestion() {
-    //   fillQuestion.textContent = quizQuestions[0].question;
+
     //   quizQuestions.answers.forEach(answers => {
     //     answerBtn = document.createElement('button')
     //     answerBtn.innerText = 'testing'
@@ -101,10 +119,6 @@ createQuestion()
 
     // }
   
-
-    //display question as text 
-    //create buttons
-    //fill inner HTML with text from Answers arrays
     //if correct answer is clicked, then move to next question
     //else timeLeft -10; then move to next question
     //if (timeLeft === 0 || there are no questions left to display)
@@ -127,5 +141,3 @@ createQuestion()
 // });
 
 //how to cycle through questions?
-//how to make buttons out of answers?
-//why does forEach not work at all in this?
