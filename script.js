@@ -3,6 +3,7 @@ var timeLeft = 60;
 var startButton = document.querySelector("#startButton");
 var timeEl = document.querySelector('#timer');
 var score = '';
+var scoreEl = document.querySelector('#enter-score');
 var clearEl = document.querySelector("#clear");
 var fillQuestion = document.querySelector("#question");
 var questionContainer = document.querySelector('#question-container')
@@ -105,7 +106,11 @@ function nextQuestion() {
   if (currentIndex != lastIndex){
     currentIndex++
   }else {
-    alert('game over!')
+    alert('game over!');
+    document.querySelector('.score-container').classList.remove('d-none');
+    document.querySelector('#question-container').classList.add('d-none');
+    score = timeLeft;
+    scoreEl.innerHTML = ('Your score is') + score;
   };
   displayQuestion()
 }
@@ -113,12 +118,12 @@ displayQuestion();
 
 //when start button is clicked, begin timer 
 startButton.addEventListener('click', function(setTime) {
+  document.querySelector('#question-container').classList.remove('d-none');
   var timerInterval = setInterval(function() {
     timeLeft--;
     timeEl.textContent = timeLeft;
     if(timeLeft === 0) {
       clearInterval(timerInterval);
-      alert('game over!')
     }
   }, 1000)
 });

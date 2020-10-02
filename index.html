@@ -28,15 +28,32 @@
         <a class="btn btn-primary btn-lg" id="startButton" role="button">Start!</a>
      </div>
 
-     <div class="card" id="question-container" style="width: 18rem;">
-      <div class="card-body hide">
-        <h5 class="card-title" id='question'></h5>
-        <button type="button" class="btn btn-success answer-button" id="answer-1"></button>
-        <button type="button" class="btn btn-success answer-button" id="answer-2"></button>
-        <button type="button" class="btn btn-success answer-button" id="answer-3"></button>
-        <button type="button" class="btn btn-success answer-button" id="answer-4"></button>
+    <div class='clearfix'>
+       <div class="card score-container d-none">
+          <h2>Game Over</h2>
+          <form method="POST">
+            <div class="input-group">
+              <label for="initials">Initials</label>
+              <input type="text" name="Initials" id="enter-initials" placeholder="xx" />
+              <p id='enter-score'></p>
+            </div>
+            <div id="msg"></div>
+            <button id="save-score">Save Score</button>
+          </form>
+        </div>
+  
+        <div class="card d-none" id="question-container" style="width: 18rem;">
+          <div class="card-body hide">
+            <h5 class="card-title" id='question'></h5>
+            <button type="button" class="btn btn-success answer-button" id="answer-1"></button>
+            <button type="button" class="btn btn-success answer-button" id="answer-2"></button>
+            <button type="button" class="btn btn-success answer-button" id="answer-3"></button>
+            <button type="button" class="btn btn-success answer-button" id="answer-4"></button>
+          </div>
       </div>
     </div>
+
+
 
 
     <script src="script.js"></script>
