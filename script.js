@@ -6,7 +6,10 @@ var score = '';
 var scoreEl = document.querySelector('#enter-score');
 var clearEl = document.querySelector("#clear");
 var fillQuestion = document.querySelector("#question");
-var questionContainer = document.querySelector('#question-container')
+var questionContainer = document.querySelector('#question-container');
+var userInitialSpan = document.getElementsByClassName('user-initials');
+var userScoreSpan = document.getElementsByClassName('user-score');
+var saveScoreButton = document.querySelector('#save-score');
 let currentIndex = 0;
 var ansChoice1 = document.querySelector('#answer-1');
 var ansChoice2 = document.querySelector('#answer-2');
@@ -116,7 +119,7 @@ function nextQuestion() {
 }
 displayQuestion();
 
-//when start button is clicked, begin timer 
+//when start button is clicked, begin timer and show quiz
 startButton.addEventListener('click', function(setTime) {
   document.querySelector('#question-container').classList.remove('d-none');
   var timerInterval = setInterval(function() {
@@ -128,16 +131,40 @@ startButton.addEventListener('click', function(setTime) {
   }, 1000)
 });
 
-    //your score is timeLeft, enter initials
-    //save score to leaderboard/local storage
-    //end game
+function renderToLeaderboard() {
+  var enteredInitial = localStorage.getItem("user initials");
+  console.log('enteredInitial:', enteredInitial);
+  var enteredScore = localStorage.getItem("user score");
+  console.log('enteredScore:', enteredScore);
 
+  var newInitial = document.createElement('li');
+  newInitial.textContent = enteredInitial;
+  userInitialSpan.appendChild(newInitial);
+
+  var newScore = document.createElement('li');
+  newScore.textContent = enteredScore;
+  userScoreSpan.appendChild(newScore);
+};
+
+//save score to leaderboard/local storage
+saveScoreButton.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var userInitials = document.querySelector("#enter-initials").value;
+  var userScore = score
+
+  alert("success! Click High Scores to view leaderboard");
+
+  localStorage.setItem("user initials", userInitials);
+  localStorage.setItem("user score", userScore);
+  renderToLeaderboard();
+});
 
 //click clear button to clear the quiz and prevent default
-clearEl.addEventListener("click", function(event) {
-  event.preventDefault();
-  textAreaEl.value = "";
-  elements.forEach(function(element) {
-    element.textContent = "";
-  });
-});
+// clearEl.addEventListener("click", function(event) {
+//   event.preventDefault();
+//   textAreaEl.value = "";
+//   elements.forEach(function(element) {
+//     element.textContent = "";
+//   });
+// });
