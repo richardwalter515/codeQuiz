@@ -5,7 +5,6 @@ var timeEl = document.querySelector('#timer');
 var score = '';
 var clearEl = document.querySelector("#clear");
 var fillQuestion = document.querySelector("#question");
-// var fillAnswers = document.querySelector("#answer");
 var questionContainer = document.querySelector('#question-container')
 let currentIndex = 0;
 var ansChoice1 = document.querySelector('#answer-1');
@@ -15,20 +14,20 @@ var ansChoice4 = document.querySelector('#answer-4');
 //array to hold the quiz questions and answers
 var quizQuestions = [
   {
-    question: 'this is question one',
-    choice1: '1something one',
-    choice2: '1something two',
-    choice3: '1something three',
-    choice4: '1something four',
-    correctChoice: '1something two'
+    question: 'What Does HTML stand for?',
+    choice1: 'A: Hyper Text Miniature Language',
+    choice2: 'B: Hyper Text Markup Language',
+    choice3: 'C: Hyper Type Markup Language',
+    choice4: 'D: Hyper Type Miniature Language',
+    correctChoice: 'B: Hyper Text Markup Language'
   },
   {
-    question: 'this is question two',
-    choice1: '2something one',
-    choice2: '2something two',
-    choice3: '2something three',
-    choice4: '2something four',
-    correctChoice: '2something three'
+    question: 'In Javascript, what characters follow a function?',
+    choice1: 'A:',
+    choice2: 'B:',
+    choice3: 'C:',
+    choice4: 'D:',
+    correctChoice: 'C:'
   },
   {
     question: 'this is question three',
@@ -48,48 +47,65 @@ var quizQuestions = [
   },
 ];
 let lastIndex = quizQuestions.length-1;
-var correctAns = quizQuestions[currentIndex].correctChoice;
+
 //functions
 function displayQuestion() {
+  let correctAns = quizQuestions[currentIndex].correctChoice;
   fillQuestion.textContent = quizQuestions[currentIndex].question;
+
   ansChoice1.innerHTML = quizQuestions[currentIndex].choice1;
   ansChoice2.innerHTML = quizQuestions[currentIndex].choice2;
   ansChoice3.innerHTML = quizQuestions[currentIndex].choice3;
   ansChoice4.innerHTML = quizQuestions[currentIndex].choice4;
-  console.log('correctAns:', correctAns)
-  console.log('ansChoice2:', ansChoice2)
-  ansChoice1.addEventListener('click', function(){
-    if (ansChoice1.innerHTML === correctAns) {
-      alert('success')
-    } else {
-      alert('wrong answer')
-    }
-  })
-  ansChoice2.addEventListener('click', function(){
-    if (ansChoice2.innerHTML === correctAns) {
-      alert('success')
-    }
-  })
-  ansChoice3.addEventListener('click', function(){
-    if (ansChoice3.innerHTML === correctAns) {
-      alert('success')
-    } else {
-      alert('wrong answer')
-    }
-  })
-  ansChoice4.addEventListener('click', function(){
-    if (ansChoice4.innerHTML === correctAns) {
-      alert('success')
-    } else {
-      alert('wrong answer')
-    }
-  })
 }
+
+//answer choice click events
+ansChoice1.addEventListener('click', function(){
+  if (ansChoice1.innerHTML === quizQuestions[currentIndex].correctChoice) {
+    alert('Correct!');
+    nextQuestion()
+  } else {
+    alert('wrong answer');
+    nextQuestion()
+  }
+})
+ansChoice2.addEventListener('click', function(){
+  if (ansChoice2.innerHTML === quizQuestions[currentIndex].correctChoice) {
+    alert('Correct!');
+    nextQuestion()
+  } else {
+    alert('wrong answer');
+    nextQuestion()
+  }
+})
+ansChoice3.addEventListener('click', function(){
+  if (ansChoice3.innerHTML === quizQuestions[currentIndex].correctChoice) {
+    alert('Correct!');
+    nextQuestion()
+  } else {
+    alert('wrong answer');
+    nextQuestion()
+  }
+})
+ansChoice4.addEventListener('click', function(){
+  if (ansChoice4.innerHTML === quizQuestions[currentIndex].correctChoice) {
+    alert('Correct!');
+    nextQuestion()
+  } else {
+    alert('wrong answer');
+    nextQuestion()
+  }
+})
+
 displayQuestion();
 
-
 function nextQuestion() {
-  currentIndex++
+  if (currentIndex <= lastIndex){
+    currentIndex++
+  }else {
+    alert('game over!')
+  };
+  displayQuestion()
 }
 
 // function createAnswers(){
