@@ -22,28 +22,28 @@ var quizQuestions = [
     correctChoice: 'B: Hyper Text Markup Language'
   },
   {
-    question: 'In Javascript, what characters follow a function?',
-    choice1: 'A:',
-    choice2: 'B:',
-    choice3: 'C:',
-    choice4: 'D:',
-    correctChoice: 'C:'
+    question: 'In Javascript, what pair of characters immediately follow a function?',
+    choice1: 'A: {}',
+    choice2: 'B: []',
+    choice3: 'C: ()',
+    choice4: 'D:<>',
+    correctChoice: 'C: ()'
   },
   {
-    question: 'this is question three',
-    choice1: '3something one',
-    choice2: '3something two',
-    choice3: '3something three',
-    choice4: '3something four',
-    correctChoice: '3something one'
+    question: 'If you want to use Javascript to find an HTML element with a specific class name, which would you use?',
+    choice1: 'document.getElementsByClassName()',
+    choice2: 'document.querySelector()',
+    choice3: 'Both',
+    choice4: 'Neither',
+    correctChoice: 'Both'
   },
   {
-    question: 'this is question four',
-    choice1: '4something one',
-    choice2: '4something two',
-    choice3: '4something three',
-    choice4: '4something four',
-    correctChoice: '4something two'
+    question: 'In an array, the fourth item would have an index of:',
+    choice1: '4',
+    choice2: '3',
+    choice3: '5',
+    choice4: '-4',
+    correctChoice: '3'
   },
 ];
 let lastIndex = quizQuestions.length-1;
@@ -65,7 +65,8 @@ ansChoice1.addEventListener('click', function(){
     alert('Correct!');
     nextQuestion()
   } else {
-    alert('wrong answer');
+    alert('wrong answer. -10 Seconds');
+    timeLeft=timeLeft-10;
     nextQuestion()
   }
 })
@@ -74,7 +75,8 @@ ansChoice2.addEventListener('click', function(){
     alert('Correct!');
     nextQuestion()
   } else {
-    alert('wrong answer');
+    alert('Wrong Answer. -10 Seconds');
+    timeLeft=timeLeft-10;
     nextQuestion()
   }
 })
@@ -83,7 +85,8 @@ ansChoice3.addEventListener('click', function(){
     alert('Correct!');
     nextQuestion()
   } else {
-    alert('wrong answer');
+    alert('Wrong Answer. -10 Seconds');
+    timeLeft=timeLeft-10;
     nextQuestion()
   }
 })
@@ -92,110 +95,44 @@ ansChoice4.addEventListener('click', function(){
     alert('Correct!');
     nextQuestion()
   } else {
-    alert('wrong answer');
+    alert('Wrong Answer. -10 Seconds');
+    timeLeft=timeLeft-10;
     nextQuestion()
   }
 })
 
-displayQuestion();
-
 function nextQuestion() {
-  if (currentIndex <= lastIndex){
+  if (currentIndex != lastIndex){
     currentIndex++
   }else {
     alert('game over!')
   };
   displayQuestion()
 }
+displayQuestion();
 
-// function createAnswers(){
-//   var correctAns = quizQuestions[0].correctAnswer;
-//   for (let i = 0; i < quizQuestions[i].answers.length; i++) {
-//     var currentAns = quizQuestions[i].answers[i];
-//     var newButton = document.createElement('button');
-//     newButton.setAttribute('value', currentAns)
-//     newButton.textContent = currentAns;
-//     fillAnswers.appendChild(newButton);
-//     newButton.addEventListener('click', function(event){
-//       if (event.target.value === correctAns) {
-//         alert('correct!')
-//         questionContainer.children[0].style.visibility = 'hidden';
-//         questionContainer.children[1].style.visibility = 'hidden';
-//         question2()
-//       } else {
-//         alert('wrong')
-//       }
-//     })
-//   }
-// }
-// function question2() {
-//   questionContainer.children[0].style.visibility = 'visible';
-//   questionContainer.children[1].style.visibility = 'visible';
-//   fillQuestion.textContent = quizQuestions[1].question;
-//   console.log('fillQuestion:', fillQuestion)
-//   createAnswers()
-//   function createAnswers(){
-//     var correctAns = quizQuestions[1].correctAnswer;
-//     console.log('correctAns:', correctAns);
-//     for (let i = 1; i < quizQuestions[i].answers.length; i++) {
-//       var currentAns = quizQuestions[i].answers[i];
-//       var newButton = document.createElement('button');
-//       newButton.setAttribute('value', currentAns)
-//       newButton.textContent = currentAns;
-//       fillAnswers.appendChild(newButton);
-//       newButton.addEventListener('click', function(event){
-//         console.log("event: ", event.target.value)
-//         console.log('correctAnswer:', correctAns)
-//         if (event.target.value === correctAns) {
-//           alert('correct!')
-//           questionContainer.children[0].style.visibility = 'hidden'
-//           questionContainer.children[1].style.visibility = 'hidden'
-//         } else {
-//           alert('wrong')
-//         }
-//       })
-//     }
-//   }
-// }
+//when start button is clicked, begin timer 
+startButton.addEventListener('click', function(setTime) {
+  var timerInterval = setInterval(function() {
+    timeLeft--;
+    timeEl.textContent = timeLeft;
+    if(timeLeft === 0) {
+      clearInterval(timerInterval);
+      alert('game over!')
+    }
+  }, 1000)
+});
 
-// function createQuestion() {
-//   fillQuestion.textContent = quizQuestions[0].question;
-//   createAnswers()
-// }
-// // quizQuestions.forEach(createQuestion);
-
-// createQuestion();  //this will go in the start button thing once it works
-
-// //when start button is clicked, begin timer and hide the code quiz jumbotron
-// startButton.addEventListener('click', function(setTime) {
-//   var timerInterval = setInterval(function() {
-//     timeLeft--;
-//     timeEl.textContent = timeLeft;
-//     if(timeLeft === 0) {
-//       clearInterval(timerInterval);
-//     }
-//   }, 1000);
-
-  
-    //if correct answer is clicked, then move to next question
-    //else timeLeft -10; then move to next question
-    //if (timeLeft === 0 || there are no questions left to display)
     //your score is timeLeft, enter initials
     //save score to leaderboard/local storage
     //end game
-    
-//   if (timeLeft === 0) // or no more questions?
-//   score = timeLeft
-// })
 
 
 //click clear button to clear the quiz and prevent default
-// clearEl.addEventListener("click", function(event) {
-//   event.preventDefault();
-//   textAreaEl.value = "";
-//   elements.forEach(function(element) {
-//     element.textContent = "";
-//   });
-// });
-
-//how to cycle through questions?
+clearEl.addEventListener("click", function(event) {
+  event.preventDefault();
+  textAreaEl.value = "";
+  elements.forEach(function(element) {
+    element.textContent = "";
+  });
+});
