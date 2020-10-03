@@ -7,8 +7,10 @@ var scoreEl = document.querySelector('#enter-score');
 var clearEl = document.querySelector("#clear");
 var fillQuestion = document.querySelector("#question");
 var questionContainer = document.querySelector('#question-container');
-var userInitialSpan = document.getElementsByClassName('user-initials');
-var userScoreSpan = document.getElementsByClassName('user-score');
+var userInitialSpan = document.querySelector('#user-initials');
+console.log('userInitialSpan:', userInitialSpan)
+var userScoreSpan = document.querySelector('#user-score');
+console.log('userScoreSpan:', userScoreSpan)
 var saveScoreButton = document.querySelector('#save-score');
 let currentIndex = 0;
 var ansChoice1 = document.querySelector('#answer-1');
