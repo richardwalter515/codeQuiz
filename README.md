@@ -8,5 +8,8 @@ You can find the quiz here: https://richardwalter515.github.io/codeQuiz/
 
 Have fun!!
 
+Start of the Quiz:
 ![startofquiz](assets/screenshot1.png)
+
+Entering Initials:
 ![enterinitials](assets/screenshot2.png)

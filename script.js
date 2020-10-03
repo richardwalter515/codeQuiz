@@ -131,8 +131,6 @@ startButton.addEventListener('click', function(setTime) {
   }, 1000)
 });
 
-
-
 //save score to leaderboard/local storage
 saveScoreButton.addEventListener("click", function(event) {
   event.preventDefault();
@@ -140,18 +138,8 @@ saveScoreButton.addEventListener("click", function(event) {
   var userInitials = document.querySelector("#enter-initials").value;
   var userScore = score;
 
-  alert("success! Click High Scores to view leaderboard");
+  alert("success! Click High Scores to view your score");
 
   localStorage.setItem("user initials", userInitials);
   localStorage.setItem("user score", userScore);
-  // renderToLeaderboard();
 });
-
-//click clear button to clear the quiz and prevent default
-// clearEl.addEventListener("click", function(event) {
-//   event.preventDefault();
-//   textAreaEl.value = "";
-//   elements.forEach(function(element) {
-//     element.textContent = "";
-//   });
-// });
