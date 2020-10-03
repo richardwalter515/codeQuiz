@@ -8,3 +8,5 @@ You can find the quiz here: https://richardwalter515.github.io/codeQuiz/
 
 Have fun!!
 
+![startofquiz](assets/screenshot1.png)
+![enterinitials](assets/screenshot2.png)
